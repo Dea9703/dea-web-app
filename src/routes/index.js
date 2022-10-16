@@ -1,8 +1,8 @@
 import { useRoutes } from 'react-router-dom'
 
-import Login from '../pages/Login'
-import Logout from '../pages/Logout'
-import Layout from '../pages/Layout'
+import Login from '@/pages/Login'
+import Logout from '@/pages/Logout'
+import Layout from '@/pages/Layout'
 
 const routesList = [
   {
