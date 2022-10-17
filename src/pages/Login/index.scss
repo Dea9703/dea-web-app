@@ -1,0 +1,64 @@
+.login {
+  position: relative;
+  height: 100vh;
+  background-image: url(../../assets/image/dea-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ .ant-form {
+  width: 520px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 35px;
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-60%);
+  margin-left: -260px;
+}
+.ant-form .title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .t-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  .t-name {
+    font-size: 26px;
+    color: #2d3a4b;
+    font-weight: bold;
+  }
+}
+.ant-form .ant-input-affix-wrapper {
+  line-height: 36px;
+  border-radius: 5px;
+}
+.ant-form .captcha {
+  justify-content: space-between;
+}
+.ant-form .captcha .ant-input-affix-wrapper {
+  width: 268px;
+}
+.ant-form .captcha .ant-btn {
+  width: 150px;
+  height: 46px;
+  border-radius: 4px;
+}
+.ant-form .ant-btn-block {
+  height: 50px;
+  font-size: 18px;
+  border-radius: 4px;
+}
+.ant-form .forget-password {
+  margin-top: -14px;
+  text-align: right;
+  color: #6c6c6c;
+}
+.ant-form .forget-password span {
+  cursor: pointer;
+}
