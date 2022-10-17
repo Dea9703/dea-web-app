@@ -1,11 +1,17 @@
 import { UserOutlined, LockOutlined, UnorderedListOutlined } from '@ant-design/icons'
 import { Form, Input, Button, Row, Col, message } from 'antd'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './index.scss'
+import { useStore } from '@/store'
 
 const Login = () => {
-  const [phone, setPhone] = useState('')
+  const navigate = useNavigate()
+  const { loginStore } = useStore()
+
+  const [account, setAccount] = useState('')
   const [pwd, setPwd] = useState('')
+  // 固定验证码：246810
   const [captcha, setCaptcha] = useState('')
   const [captchaBtn, setCaptchaBtn] = useState('获取验证码')
   const [captchaBtnDisabled, setCaptchaBtnDisabled] = useState(false)
@@ -18,7 +24,7 @@ const Login = () => {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      if (!phone) {
+      if (!account) {
         message.error('手机号不存在')
       } else {
         message.success('验证码发送成功')
@@ -40,7 +46,15 @@ const Login = () => {
   const login = async () => {
     try {
       const values = await loginForm.validateFields()
+      // values 放置的是表单中用户输入的所有内容
       console.log('Success:', values)
+      // todo: 登录
+      await loginStore.getToken({
+        mobile: values.account,
+        code: values.captcha
+      })
+      message.success('登录成功')
+      navigate('/', { replace: true })
     } catch (errorInfo) {
       console.log('Failed:', errorInfo)
     }
@@ -91,13 +105,13 @@ const Login = () => {
           <img className='t-logo' src={require('@/assets/image/web.png')} alt="logo" />
           <span className='t-name'>Dea管理系统</span>
         </div>
-        <Form.Item name="username" rules={[{ validator: phoneValidator }]}>
+        <Form.Item name="account" rules={[{ validator: phoneValidator }]}>
           <Input
             prefix={<UserOutlined />}
-            value={phone}
+            value={account}
             allowClear
             placeholder='手机号'
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => setAccount(e.target.value)}
           />
         </Form.Item>
         <Form.Item name="pwd" rules={[{ validator: pwdValidator }]}>
