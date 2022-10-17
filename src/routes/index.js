@@ -3,6 +3,7 @@ import { useRoutes } from 'react-router-dom'
 import Login from '@/pages/Login'
 import Logout from '@/pages/Logout'
 import Layout from '@/pages/Layout'
+import { AuthRoute } from '@/components/AuthRoute'
 
 const routesList = [
   {
@@ -16,7 +17,7 @@ const routesList = [
   },
   {
     path: '/',
-    element: <Layout />
+    element: <AuthRoute><Layout /></AuthRoute>
   }
 ]
 
