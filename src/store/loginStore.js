@@ -1,9 +1,9 @@
 // login module
 const { makeAutoObservable } = require("mobx")
-const { request } = require('@/utils')
+const { request, getToken, setToken } = require('@/utils')
 
 class LoginStore {
-  token = ''
+  token = getToken() || ''
 
   constructor() {
     // 响应式
@@ -16,6 +16,8 @@ class LoginStore {
     })
     // 存入token
     this.token = res.data.token
+    // 存入localStorage
+    setToken(this.token)
   }
 
 }
